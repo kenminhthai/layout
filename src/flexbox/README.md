@@ -3,6 +3,9 @@ flexbox
 
 An attribute-based flexbox implementation.
 
+Note, the `<at-flexbox>` tag only exists for completeness (since other riot tags will use it, it makes sense to have it exist as a dependency).
+In most cases, the attributes should be used on other, semantically appropriate elements.
+
 attribute api
 -------------
 
