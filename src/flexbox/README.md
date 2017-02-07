@@ -14,23 +14,12 @@ Sets the element as a flex container (`display: flex`).
 Optional values can specify wrapping and content justification.
 - `wrap`|`reverse`:  Specifies `flex-wrap` value (omit for default (`none`)).
 - `end`|`center`|`between`|`around`:  Specifies `justify-content` value (omit for default (`start`)).
-
-### `inline`
-Together with the `flexbox` attribute, sets the element as an inline flex container (`display: inline-flex`).
-This is a boolean attribute; it does not take values.
-Omit for a regular flex container.
-
-### `row`
-Together with the `flexbox` attribute, sets the horizontal axis as the flex container's main axis (`flex-direction: row`).
-An optional value can specify a reverse row.
-Note that `row` is the default direction for flex containers;
-no value, nor the `row` attribute itself, is required.
-- `reverse`: Specifies a reversed row.
-
-### `column`
-Together with the `flexbox` attribute, sets the vertical axis as the flex container's main axis (`flex-direction: column`).
-An optional value can specify a reverse container.
-- `reverse`: Specifies a reversed column.
+- `inline`: Makes the flex container an `inline-flex` container (omit for default (`flex`)).
+- `row`: The horizontal axis is the default main axis for flex containers, so there is no need for a "row" value.
+  But you can type it anyway, if it makes you feel better.
+- `column`: Sets the vertical axis as the flex container's main axis (`flex-direction: column`).
+- `reverse`: Reverses the main axis (`flex-direction: column-reverse` if `column` is set; `row-reverse` otherwise).
+- `gutter`: Adds a margin between each of the container's flex items (omit for no margins).
 
 ### `items`
 Together with the `flexbox` attribute, sets the default alignment of the container's flex items (`align-items`).
@@ -52,18 +41,13 @@ there are likely better ways to do it in any given case).
   If omitted, defaults to value specified in parent `flexbox`'s `item` attribute, or `stretch` if none.
 - `1`|`2`|`3`|`4`|`5`:  Sets the display order of the flex item (omit for default (source order)).
 
-### `grow`
+### `item-grow`
 On a flex item (direct child of a `flexbox` element), sets the `flex-grow` and `flex-shrink` values,
 possibly overriding defaults set on the flex container.
 As with `item-align`, only a limited number of values are provided.
 - `1`|`0`: Sets the flex item to grow or not grow when necessary.
   If omitted, defaults to `1` if `items="grow"` is set on the flex container, or `0` otherwise.
 - `-1`: Sets the flex item to shrink when necessary (omit for default (`0`)).
-
-### `gutter`
-Together with the `flexbox` attribute, adds a margin between each of the container's flex items.
-This is a boolean attribute; it does not take values.
-Omit for no margins.
 
 examples
 --------
@@ -76,11 +60,11 @@ Articles in the main content area are displayed as columns.
 
 _html_
 ```html
-<body flexbox column>
+<body flexbox="column">
   <header>
     <h1>header</h1>
   </header>
-  <main flexbox gutter grow items="grow">
+  <main flexbox="gutter" grow>
     <article>article one</article>
     <article>article two</article>
     <article>article three</article>
