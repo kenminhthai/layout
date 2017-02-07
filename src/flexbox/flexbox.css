@@ -1,0 +1,235 @@
+/**
+ * attribute-based flexbox styling.
+ *
+ * @package    at.riot-layout
+ * @author     Adrian <adrian@enspi.red>
+ * @copyright  2017
+ * @license    GPL-3.0 (only)
+ *
+ *  This program is free software: you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License, version 3.
+ *  The right to apply the terms of later versions of the GPL is RESERVED.
+ *
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+ */
+
+/* defaults */
+[flexbox] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-flow: row nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+}
+
+[flexbox][inline] {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+[flexbox] > * {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+}
+
+/* direction */
+[flexbox][row="reverse"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+[flexbox][column] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+[flexbox][column="reverse"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+/* wrap, content justification */
+[flexbox~="wrap"] {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+[flexbox~="reverse"] {
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+[flexbox~="end"] {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+[flexbox~="center"] {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+[flexbox~="between"] {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+[flexbox~="around"] {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+/* item alignment */
+[flexbox][items~="start"] {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -ms-grid-row-align: flex-start;
+  align-items: flex-start;
+}
+[flexbox][items~="end"] {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  -ms-grid-row-align: flex-end;
+  align-items: flex-end;
+}
+[flexbox][items~="center"] {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+[flexbox][items~="baseline"] {
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  -ms-grid-row-align: baseline;
+  align-items: baseline;
+}
+
+/* content alignment */
+[flexbox][contents="start"] {
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+}
+[flexbox][contents="end"] {
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+}
+[flexbox][contents="center"] {
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+[flexbox][contents="between"] {
+  -ms-flex-line-pack: between;
+  align-content: between;
+}
+[flexbox][contents="around"] {
+  -ms-flex-line-pack: around;
+  align-content: around;
+}
+
+/* flex-item alignment overrides */
+[flexbox] > *[item-align~="start"] {
+  -ms-flex-item-align: start;
+  align-self: start;
+}
+[flexbox] > *[item-align~="end"] {
+  -ms-flex-item-align: end;
+  align-self: end;
+}
+[flexbox] > *[item-align~="center"] {
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+[flexbox] > *[item-align~="baseline"] {
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+}
+[flexbox] > *[item-align~="stretch"] {
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+[flexbox] > *[item-align~="1"] {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+}
+[flexbox] > *[item-align~="2"] {
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
+}
+[flexbox] > *[item-align~="3"] {
+  -webkit-box-ordinal-group: 4;
+  -ms-flex-order: 3;
+  order: 3;
+}
+[flexbox] > *[item-align~="4"] {
+  -webkit-box-ordinal-group: 5;
+  -ms-flex-order: 4;
+  order: 4;
+}
+[flexbox] > *[item-align~="5"] {
+  -webkit-box-ordinal-group: 6;
+  -ms-flex-order: 5;
+  order: 5;
+}
+
+/* flex-item grow, shrink */
+[flexbox][items~="grow"] > *,
+[flexbox] > *[grow] {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+[flexbox] > *[grow~="0"] {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+[flexbox] > *[grow~="-1"] {
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+/* growable flex-items with gutters between */
+[flexbox][gutter] > * {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin: 0 0 0 1em;
+}
+[flexbox][row="reverse"][gutter] > * {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin: 0 1em 0 0;
+}
+[flexbox][column][gutter] > * {
+  margin: 1em 0 0 0;
+}
+[flexbox][column="reverse"][gutter] > * {
+  margin: 0 0 1em 0;
+}
+
+[flexbox][gutter] > *:first-child {
+  margin: 0;
+}
