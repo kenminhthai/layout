@@ -15,24 +15,25 @@ Optional values can specify wrapping and content justification.
 - `wrap`|`reverse`:  Specifies `flex-wrap` value (omit for default (`none`)).
 - `end`|`center`|`between`|`around`:  Specifies `justify-content` value (omit for default (`start`)).
 - `inline`: Makes the flex container an `inline-flex` container (omit for default (`flex`)).
-- `row`: The horizontal axis is the default main axis for flex containers, so there is no need for a "row" value.
-  But you can type it anyway, if it makes you feel better.
-- `column`: Sets the vertical axis as the flex container's main axis (`flex-direction: column`).
+- `row`|`column`: Sets the main axis for the flex container.
+  Use `column` to specify the vertical axis; omit to specify the horizontal axis.
+  _(The horizontal axis is the default main axis for flex containers, so there is no need for a "row" value.
+  But you can type it anyway, if it makes you feel better.)_
 - `reverse`: Reverses the main axis (`flex-direction: column-reverse` if `column` is set; `row-reverse` otherwise).
 - `gutter`: Adds a margin between each of the container's flex items (omit for no margins).
 
-### `items`
-Together with the `flexbox` attribute, sets the default alignment of the container's flex items (`align-items`).
+### `flex-items`
+Sets the default alignment of the container's flex items (`align-items`).
 This value can be overridden by the flex items themselves (see `item-align`).
 - `start`|`end`|`center`|`baseline`:  Specifies the default item alignment (omit for default (`stretch`)).
 - `grow`:  Sets the flex items to grow by default (`flex-grow: 1`).  Omit for no growth by default.
 
-### `contents`
-Together with the `flexbox` attribute, sets the alignment of the flex items on the cross axis (`align-content`).
+### `flex-contents`
+Sets the alignment of the flex items on the cross axis (`align-content`).
 - `start`|`end`|`center`|`between`|`around`:  Specifies content alignment (omit for default (`stretch`)).
 
 ### `item-align`
-On a flex item (here, meaning a direct child of a `flexbox` element),
+On a flex item (meaning, for our purposes, a direct child of a `flexbox` element),
 overrides the flex-item's alignment or display order (`align-self` and `order`).
 Only a limited number of values for `order` are provided
 (and I don't expect them to see a lot of use;
@@ -56,7 +57,7 @@ examples
 A website with a full-width header and a "sticky" footer.
 Articles in the main content area are displayed as columns.
 
-![a typical website layout](layout.demo.png)
+![a typical website layout](demo/layout.png)
 
 _html_
 ```html
@@ -92,4 +93,4 @@ header, main, article, footer {
 }
 ```
 
-See [the demo file](flexbox.demo.html) for more.
+See [the demo file](demo/flexbox.html) for more.

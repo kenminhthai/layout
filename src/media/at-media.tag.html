@@ -1,0 +1,18 @@
+<at-media flexbox="{opts.layout || 'row'} gutter">
+  <at-media-media>
+    <img
+      src="{opts.src}"
+      alt="{opts.alt || ''}"
+      style="width:{opts.width || '5em'}; height:{opts.height || 'auto'}">
+  </at-media-media>
+  <at-media-content flexbox="column" item-grow>
+    <header if="{opts.title}">
+      <h1>{opts.title}</h1>
+      <p if="{opts.tagline}">{opts.tagline}</p>
+    </header>
+    <article item-grow>
+      <yield/>
+    </article>
+    <footer if="{opts.footer}">{opts.footer}</footer>
+  </at-media-content>
+</at-media>

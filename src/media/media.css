@@ -1,0 +1,55 @@
+/**
+ * media object styling.
+ *
+ * @package    at.riot-layout
+ * @author     Adrian <adrian@enspi.red>
+ * @copyright  2017
+ * @license    GPL-3.0 (only)
+ *
+ *  This program is free software: you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License, version 3.
+ *  The right to apply the terms of later versions of the GPL is RESERVED.
+ *
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+ */
+
+/* basic styles */
+at-media {
+  outline: 1px solid #eee;
+  margin: 1em;
+  padding: 1em;
+}
+at-media-media,
+at-media-content {
+  position: relative;
+}
+at-media-content header h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+}
+at-media-content header p {
+  color: #ccc;
+}
+at-media-content footer {
+  color: #ccc;
+  font-variant: small-caps;
+  margin: 0;
+}
+
+/* layouts */
+at-media[flexbox~="column"] at-media-media {
+  margin: 0 auto;
+}
+at-media[flexbox~="reverse"] at-media-content {
+  text-align: right;
+}
+at-media[flexbox~="column"] at-media-media,
+at-media[flexbox~="column"] at-media-content {
+  text-align: center;
+}
