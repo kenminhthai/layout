@@ -1,0 +1,69 @@
+/**
+ * attribute-based flexbox grid system.
+ *
+ * @package    at.riot-layout
+ * @author     Adrian <adrian@enspi.red>
+ * @copyright  2017
+ * @license    GPL-3.0 (only)
+ *
+ *  This program is free software: you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License, version 3.
+ *  The right to apply the terms of later versions of the GPL is RESERVED.
+ *
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+ */
+
+/* grid system */
+[flexbox][flexbox~="grid"],
+[flexbox][flexbox~="grid"] > * {
+  margin: 0;
+}
+
+[flexbox~="grid"] > * {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+[flexbox~="grid"] > *[grid-cell~="1"] {
+  max-width: 8.333333%;
+}
+[flexbox~="grid"] > *[grid-cell~="2"] {
+  max-width: 16.666667%;
+}
+[flexbox~="grid"] > *[grid-cell~="3"] {
+  max-width: 25%;
+}
+[flexbox~="grid"] > *[grid-cell~="4"] {
+  max-width: 33.333333%;
+}
+[flexbox~="grid"] > *[grid-cell~="5"] {
+  max-width: 41.666667%;
+}
+[flexbox~="grid"] > *[grid-cell~="6"] {
+  max-width: 50%;
+}
+[flexbox~="grid"] > *[grid-cell~="7"] {
+  max-width: 58.333333%;
+}
+[flexbox~="grid"] > *[grid-cell~="8"] {
+  max-width: 66.666667%;
+}
+[flexbox~="grid"] > *[grid-cell~="9"] {
+  max-width: 75%;
+}
+[flexbox~="grid"] > *[grid-cell~="10"] {
+  max-width: 83.333333%;
+}
+[flexbox~="grid"] > *[grid-cell~="11"] {
+  max-width: 91.666667%;
+}
+[flexbox~="grid"] > *[grid-cell~="12"] {
+  max-width: 100%;
+}
+
+https://jsfiddle.net/x5avor50/15/  (grid)

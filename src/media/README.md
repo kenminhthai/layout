@@ -38,6 +38,21 @@ Note, `<at-media>` is a flexbox-based element,
 and so it is possible to pass other [`flexbox` attribute values](../flexbox/README.md) via the `layout` attribute.
 This may have unexpected results, however, and is not supported nor recommended.
 
+yielding api
+------------
+
+### `yield`
+Element contents are yielded to `at-media-content article`.  This element will be empty if no content is present.
+
+### `yield to=media`
+When the `src` attribute is set to an empty string, `media` contents will be yielded to `at-media-media`.
+
+### `yield to=header`
+When the `title` attribute is set to an empty string, `header` contents will be yielded to `at-media-content header`.
+
+### `yield to=footer`
+When the `footer` attribute is set to an empty string, `footer` contents will be yielded to `at-media-content footer`.
+
 examples
 --------
 

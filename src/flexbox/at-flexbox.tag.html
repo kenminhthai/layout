@@ -1,3 +1,52 @@
+/**
+ * @package    at.riot-layout
+ * @author     Adrian <adrian@enspi.red>
+ * @copyright  2017
+ * @license    GPL-3.0 (only)
+ *
+ *  This program is free software: you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License, version 3.
+ *  The right to apply the terms of later versions of the GPL is RESERVED.
+ *
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+ */
+
+/**
+ * an attribute-based layout element based on flexbox.
+ *
+ * note, this element does nothing that cannot be done via the flexbox attributes alone;
+ * in most cases a more appropriate/semantic element should be used.
+ * it exists here mainly for completeness and as a way for other elements to express dependencies.
+ *
+ * options for flex containers:
+ * @opts string flexbox        a space-separated list of layout options:
+ *  - wrap|reverse               specifies flex-wrap value; defaults to 'none'
+ *  - end|center|between|around  specifies justify-content value; defaults to 'start'
+ *  - inline                     makes the flex container display inline; defaults to 'flex'
+ *  - row|column                 sets the flex container's main axis; defaults to 'row'
+ *  - reverse                    reverses the main axis
+ *                               (column-reverse if 'column' is set; row-reverse otherwise)
+ *  - gutter                     adds a margin between each of the container's flex items
+ * @opts string flex-items     a space-separated list of default display properties for flex-items:
+ *  - start|end|center|baseline  sets default alignment; defaults to 'stretch'
+ *  - grow                       sets items to grow as needed; defaults to 'none'
+ * @opts string flex-contents  sets cross-axis alignment of flex-items
+ *                             (one of start|end|center|between|around; defaults to 'stretch')
+ *
+ * options for flex items (which may be flex containers also):
+ * @opts string item-align  a space-separated list of display options:
+ *  - start|end|center|baseline|stretch  sets item's self-alignment;
+ *                                       defaults to container's `flex-items` value (if set) or 'stretch'
+ *  - 1|2|3|4|5                          sets the item's display order; defaults to source order
+ * @opts int item-grow      sets the item to grow (1) or shrink (-1); defaults to neither (0)
+ *
+ * @yields  to tag root; direct child elements become flex-items
+ */
 <at-flexbox flexbox="{opts.flexbox || 'row'}">
   <yield/>
 </at-flexbox>

@@ -1,18 +1,67 @@
+/**
+ * @package    at.riot-layout
+ * @author     Adrian <adrian@enspi.red>
+ * @copyright  2017
+ * @license    GPL-3.0 (only)
+ *
+ *  This program is free software: you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License, version 3.
+ *  The right to apply the terms of later versions of the GPL is RESERVED.
+ *
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+ */
+
+/**
+ * a general-purpose media object, based on the ui pattern described by Nicole Sullivan.
+ * @uses <at-flexbox>
+ *
+ * @opts string src      sets the image src attribute; omit for no image
+ * @opts string alt      sets the image alt attribute; defaults to an empty string
+ * @opts int    width    sets the image width; defaults to '5em'
+ * @opts int    height   sets the image height; defaults to 'auto'
+ * @opts string title    sets the title in the content header; omit for no header
+ * @opts string tagline  sets the subtitle in the content header; omit for no tagline
+ * @opts string footer   sets the text in the content footer; omit for no footer
+ * @opts string layout   sets the element layout; one of row|reverse|column|column reverse
+ *
+ * @yields         to at-media-content article
+ * @yields media   to at-media-media area, IF opts.src is "" (empty string)
+ * @yields header  to at-media-content header, IF opts.title is ""
+ * @yields footer  to at-media-content footer, IF opts.footer is ""
+ */
 <at-media flexbox="{opts.layout || 'row'} gutter">
   <at-media-media>
-    <img
-      src="{opts.src}"
-      alt="{opts.alt || ''}"
-      style="width:{opts.width || '5em'}; height:{opts.height || 'auto'}">
+    <img if="{opts.src}" ref="media" src="{opts.src}" alt="{opts.alt || ''}">
+    <yield if="{opts.src === ''}" from="media"/>
   </at-media-media>
   <at-media-content flexbox="column" item-grow>
     <header if="{opts.title}">
       <h1>{opts.title}</h1>
       <p if="{opts.tagline}">{opts.tagline}</p>
     </header>
+    <header if="{opts.title === ''}"><yield from="header"/></header>
     <article item-grow>
       <yield/>
     </article>
     <footer if="{opts.footer}">{opts.footer}</footer>
+    <footer if="{opts.footer === ''}"><yield from="footer"/></footer>
   </at-media-content>
+
+  <script type="text/javascript">
+    var tag = this,
+        setImgStyle;
+
+    setImgStyle = function() {
+      if (! tag.refs.media) { return; }
+      tag.refs.media.style.width = opts.width || '5em';
+      tag.refs.media.style.height = opts.height || 'auto';
+    };
+    tag.on('mount', setImgStyle);
+    tag.on('update', setImgStyle);
+  </script>
 </at-media>
